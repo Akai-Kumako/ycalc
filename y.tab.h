@@ -40,14 +40,16 @@
       know about them.  */
    enum yytokentype {
      NUM = 258,
-     DOLLAR = 259,
-     UMINUS = 260
+     LETTER = 259,
+     DOLLAR = 260,
+     UMINUS = 261
    };
 #endif
 /* Tokens.  */
 #define NUM 258
-#define DOLLAR 259
-#define UMINUS 260
+#define LETTER 259
+#define DOLLAR 260
+#define UMINUS 261
 
 
 
