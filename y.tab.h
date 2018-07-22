@@ -41,15 +41,17 @@
    enum yytokentype {
      NUM = 258,
      LETTER = 259,
-     DOLLAR = 260,
-     UMINUS = 261
+     CLEAR = 260,
+     DOLLAR = 261,
+     UMINUS = 262
    };
 #endif
 /* Tokens.  */
 #define NUM 258
 #define LETTER 259
-#define DOLLAR 260
-#define UMINUS 261
+#define CLEAR 260
+#define DOLLAR 261
+#define UMINUS 262
 
 
 

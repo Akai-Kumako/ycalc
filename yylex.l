@@ -34,6 +34,9 @@ int c;
 		  /* その文字コードそのものを戻り値とする．	*/
 		  return yytext[0];
 		}
+clear {
+      return CLEAR;
+    }
 .		{ /* その他の文字はエラーとして読み飛ばす．	*/
 		  fprintf(stderr, "'%s' is ignored.\n", yytext);
 		}
