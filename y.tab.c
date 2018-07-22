@@ -87,8 +87,8 @@
 #line 1 "ycalc.y"
 
 #include <stdio.h>
-int var = 0;
-int alph[26];
+double var = 0;
+double alph[26];
 int flag = 0;
 
 
@@ -111,7 +111,14 @@ int flag = 0;
 #endif
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+#line 9 "ycalc.y"
+{
+  double num;
+}
+/* Line 193 of yacc.c.  */
+#line 121 "y.tab.c"
+	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
@@ -123,7 +130,7 @@ typedef int YYSTYPE;
 
 
 /* Line 216 of yacc.c.  */
-#line 127 "y.tab.c"
+#line 134 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -410,8 +417,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    22,    22,    29,    30,    34,    35,    36,    37,    38,
-      39,    41,    42,    43,    44,    45
+       0,    25,    25,    32,    33,    37,    38,    39,    40,    41,
+      42,    44,    45,    46,    47,    48
 };
 #endif
 
@@ -1326,9 +1333,9 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 22 "ycalc.y"
+#line 25 "ycalc.y"
     { if(flag == 0){
-                    printf("%d\n> ", (yyvsp[(2) - (3)])); var = (yyvsp[(2) - (3)]);
+                    printf("%f\n> ", (yyvsp[(2) - (3)].num)); var = (yyvsp[(2) - (3)].num);
                   }else if(flag == 1){
                     printf("> ");
                   }else if(flag == 2){
@@ -1337,67 +1344,67 @@ yyreduce:
     break;
 
   case 3:
-#line 29 "ycalc.y"
+#line 32 "ycalc.y"
     { printf("> "); }
     break;
 
   case 4:
-#line 30 "ycalc.y"
+#line 33 "ycalc.y"
     { printf("> "); }
     break;
 
   case 5:
-#line 34 "ycalc.y"
-    { (yyval) = (yyvsp[(1) - (3)]) + (yyvsp[(3) - (3)]); }
+#line 37 "ycalc.y"
+    { (yyval.num) = (yyvsp[(1) - (3)].num) + (yyvsp[(3) - (3)].num); }
     break;
 
   case 6:
-#line 35 "ycalc.y"
-    { (yyval) = (yyvsp[(1) - (3)]) - (yyvsp[(3) - (3)]); }
+#line 38 "ycalc.y"
+    { (yyval.num) = (yyvsp[(1) - (3)].num) - (yyvsp[(3) - (3)].num); }
     break;
 
   case 7:
-#line 36 "ycalc.y"
-    { (yyval) = (yyvsp[(1) - (3)]) * (yyvsp[(3) - (3)]); }
+#line 39 "ycalc.y"
+    { (yyval.num) = (yyvsp[(1) - (3)].num) * (yyvsp[(3) - (3)].num); }
     break;
 
   case 8:
-#line 37 "ycalc.y"
-    { (yyval) = (yyvsp[(1) - (3)]) / (yyvsp[(3) - (3)]); }
+#line 40 "ycalc.y"
+    { (yyval.num) = (yyvsp[(1) - (3)].num) / (yyvsp[(3) - (3)].num); }
     break;
 
   case 9:
-#line 38 "ycalc.y"
-    { alph[(yyvsp[(1) - (3)])] = (yyvsp[(3) - (3)]); (yyval) = alph[(yyvsp[(1) - (3)])]; flag = 1; }
+#line 41 "ycalc.y"
+    { alph[(int)(yyvsp[(1) - (3)].num)] = (yyvsp[(3) - (3)].num); (yyval.num) = alph[(int)(yyvsp[(1) - (3)].num)]; flag = 1; }
     break;
 
   case 10:
-#line 40 "ycalc.y"
-    { (yyval) = -(yyvsp[(2) - (2)]); }
+#line 43 "ycalc.y"
+    { (yyval.num) = -(yyvsp[(2) - (2)].num); }
     break;
 
   case 11:
-#line 41 "ycalc.y"
-    { (yyval) = (yyvsp[(2) - (3)]); }
+#line 44 "ycalc.y"
+    { (yyval.num) = (yyvsp[(2) - (3)].num); }
     break;
 
   case 12:
-#line 42 "ycalc.y"
-    { (yyval) = (yyvsp[(1) - (1)]); }
+#line 45 "ycalc.y"
+    { (yyval.num) = (yyvsp[(1) - (1)].num); }
     break;
 
   case 13:
-#line 43 "ycalc.y"
-    { (yyval) = var; }
+#line 46 "ycalc.y"
+    { (yyval.num) = var; }
     break;
 
   case 14:
-#line 44 "ycalc.y"
-    { (yyval) = alph[(yyvsp[(1) - (1)])]; }
+#line 47 "ycalc.y"
+    { (yyval.num) = alph[(int)(yyvsp[(1) - (1)].num)]; }
     break;
 
   case 15:
-#line 45 "ycalc.y"
+#line 48 "ycalc.y"
     { for(int i = 0; i < 26; i++){
                 alph[i] = 0;
               } flag = 2;
@@ -1406,7 +1413,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 1410 "y.tab.c"
+#line 1417 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1620,7 +1627,7 @@ yyreturn:
 }
 
 
-#line 50 "ycalc.y"
+#line 53 "ycalc.y"
 
 main() {
   while(!feof(stdin)){	/* error が発生しても EOF まで実行を続ける */
